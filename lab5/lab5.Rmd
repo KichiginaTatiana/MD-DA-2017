@@ -1,12 +1,12 @@
 ---
 title: "lab5"
 author: "Tatiana Kichigina"
-date: '26 ноября 2017 г '
+date: '26 РЅРѕСЏР±СЂСЏ 2017 Рі '
 output:
   html_document: default
   pdf_document: default
 ---
-Пользуясь примером из лекции файл (5.0.R) проанализируйте данные о возрасте и физ. характеристиках моллюсков
+РџРѕР»СЊР·СѓСЏСЃСЊ РїСЂРёРјРµСЂРѕРј РёР· Р»РµРєС†РёРё С„Р°Р№Р» (5.0.R) РїСЂРѕР°РЅР°Р»РёР·РёСЂСѓР№С‚Рµ РґР°РЅРЅС‹Рµ Рѕ РІРѕР·СЂР°СЃС‚Рµ Рё С„РёР·. С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєР°С… РјРѕР»Р»СЋСЃРєРѕРІ
 https://archive.ics.uci.edu/ml/datasets/abalone
 ```{r}
 data <- read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data", header=TRUE, sep=",")
@@ -19,23 +19,23 @@ colnames(data) <- c("sex", "length", "diameter", "height",
 colnames(data)
 data$sex <- factor(c("Female", "Infant", "Male")[data$sex])
 par(mfrow=c(1,3)) 
-hist(data$diameter, main = "Диаметр моллюска, мм")
-hist(data$height, main = "Высота моллюска, мм")
-hist(data$whole_weight, main = "Полный вес моллюска, гр")
+hist(data$diameter, main = "Р”РёР°РјРµС‚СЂ РјРѕР»Р»СЋСЃРєР°, РјРј")
+hist(data$height, main = "Р’С‹СЃРѕС‚Р° РјРѕР»Р»СЋСЃРєР°, РјРј")
+hist(data$whole_weight, main = "РџРѕР»РЅС‹Р№ РІРµСЃ РјРѕР»Р»СЋСЃРєР°, РіСЂ")
 ```
 
-Видим ассиметрию https://en.wikipedia.org/wiki/Skewness и выбросы (от них нужно избавиться).
+Р’РёРґРёРј Р°СЃСЃРёРјРµС‚СЂРёСЋ https://en.wikipedia.org/wiki/Skewness Рё РІС‹Р±СЂРѕСЃС‹ (РѕС‚ РЅРёС… РЅСѓР¶РЅРѕ РёР·Р±Р°РІРёС‚СЊСЃСЏ).
 
-Визулизируем возможные зависимости.
+Р’РёР·СѓР»РёР·РёСЂСѓРµРј РІРѕР·РјРѕР¶РЅС‹Рµ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё.
 ```{r}
 par(mfrow=c(1,2)) 
-plot(data$diameter, data$whole_weight,'p',main = "Зависимость веса от диаметра ")
-plot(data$height, data$whole_weight,'p',main = "Зависимость веса от высоты")
+plot(data$diameter, data$whole_weight,'p',main = "Р—Р°РІРёСЃРёРјРѕСЃС‚СЊ РІРµСЃР° РѕС‚ РґРёР°РјРµС‚СЂР° ")
+plot(data$height, data$whole_weight,'p',main = "Р—Р°РІРёСЃРёРјРѕСЃС‚СЊ РІРµСЃР° РѕС‚ РІС‹СЃРѕС‚С‹")
 ```
 
-Хорошо видна зависимость, нужно её исследовать. Построить линейные модели при помощи функции lm, посмотреть их характеристики.
+РҐРѕСЂРѕС€Рѕ РІРёРґРЅР° Р·Р°РІРёСЃРёРјРѕСЃС‚СЊ, РЅСѓР¶РЅРѕ РµС‘ РёСЃСЃР»РµРґРѕРІР°С‚СЊ. РџРѕСЃС‚СЂРѕРёС‚СЊ Р»РёРЅРµР№РЅС‹Рµ РјРѕРґРµР»Рё РїСЂРё РїРѕРјРѕС‰Рё С„СѓРЅРєС†РёРё lm, РїРѕСЃРјРѕС‚СЂРµС‚СЊ РёС… С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё.
 ```{r}
-#Линейная модель зависимости веса от диаметра моллюска
+#Р›РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РІРµСЃР° РѕС‚ РґРёР°РјРµС‚СЂР° РјРѕР»Р»СЋСЃРєР°
 linear.model.weight.from.diameter<-lm(whole_weight~diameter,data)
 linear.model.weight.from.diameter
 summary(linear.model.weight.from.diameter)
@@ -43,16 +43,16 @@ plot(linear.model.weight.from.diameter)
 ```
 
 ```{r}
-#Линейная модель зависимости веса от высоты моллюска
+#Р›РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РІРµСЃР° РѕС‚ РІС‹СЃРѕС‚С‹ РјРѕР»Р»СЋСЃРєР°
 linear.model.weight.from.height<-lm(whole_weight~height,data)
 linear.model.weight.from.height
 summary(linear.model.weight.from.height)
 plot(linear.model.weight.from.height)
 ```
 
-Избавиться от выборосов, построить ещё модели и проверить их.
+РР·Р±Р°РІРёС‚СЊСЃСЏ РѕС‚ РІС‹Р±РѕСЂРѕСЃРѕРІ, РїРѕСЃС‚СЂРѕРёС‚СЊ РµС‰С‘ РјРѕРґРµР»Рё Рё РїСЂРѕРІРµСЂРёС‚СЊ РёС….
 ```{r}
-#Определение отклонений для линейной модели зависимости веса от диаметра моллюска
+#РћРїСЂРµРґРµР»РµРЅРёРµ РѕС‚РєР»РѕРЅРµРЅРёР№ РґР»СЏ Р»РёРЅРµР№РЅРѕР№ РјРѕРґРµР»Рё Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РІРµСЃР° РѕС‚ РґРёР°РјРµС‚СЂР° РјРѕР»Р»СЋСЃРєР°
 data.noout<-data[data$height<0.4&data$height>0.03&data$diameter>0.1,]
 linear.model.weight.from.diameter.deviation<-lm(whole_weight~diameter,data.noout)
 linear.model.weight.from.diameter.deviation
@@ -61,7 +61,7 @@ plot(linear.model.weight.from.diameter.deviation)
 ```
 
 ```{r}
-#Определение отклонений для линейной модели зависимости веса от диаметра моллюска
+#РћРїСЂРµРґРµР»РµРЅРёРµ РѕС‚РєР»РѕРЅРµРЅРёР№ РґР»СЏ Р»РёРЅРµР№РЅРѕР№ РјРѕРґРµР»Рё Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РІРµСЃР° РѕС‚ РґРёР°РјРµС‚СЂР° РјРѕР»Р»СЋСЃРєР°
 data.noout<-data[data$height<0.4&data$height>0.05,]
 linear.model.weight.from.height.deviation<-lm(whole_weight~height,data.noout)
 linear.model.weight.from.height.deviation
@@ -70,7 +70,7 @@ plot(linear.model.weight.from.height.deviation)
 ```
 
 ```{r}
-#Линейная модель зависимости веса от высоты и диаметра моллюска
+#Р›РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РІРµСЃР° РѕС‚ РІС‹СЃРѕС‚С‹ Рё РґРёР°РјРµС‚СЂР° РјРѕР»Р»СЋСЃРєР°
 linear.model.weight.from.height.and.diameter<-lm(whole_weight~+height+diameter,data.noout)
 linear.model.weight.from.height.and.diameter
 summary(linear.model.weight.from.height.and.diameter)
@@ -78,21 +78,21 @@ plot(linear.model.weight.from.height.and.diameter)
 ```
 
 ```{r}
-#Линейная модель физических характеристик моллюсков всё в одном 
+#Р›РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ С„РёР·РёС‡РµСЃРєРёС… С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє РјРѕР»Р»СЋСЃРєРѕРІ РІСЃС‘ РІ РѕРґРЅРѕРј 
 linear.model.all<-lm(whole_weight~.-shucked_weight-viscera_weight-shell_weight,data.noout)
 linear.model.all
 summary(linear.model.all)
 plot(linear.model.all)
 ```
 
-Разделить массив данных на 2 случайные части.
+Р Р°Р·РґРµР»РёС‚СЊ РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РЅР° 2 СЃР»СѓС‡Р°Р№РЅС‹Рµ С‡Р°СЃС‚Рё.
 ```{r}
 odds <- seq(1, nrow(data.noout), by=2)
 data.in <- data.noout[odds,]
 data.out <- data.noout[-odds,]
 ```
 
-Подогнать модель по первой части.
+РџРѕРґРѕРіРЅР°С‚СЊ РјРѕРґРµР»СЊ РїРѕ РїРµСЂРІРѕР№ С‡Р°СЃС‚Рё.
 ```{r}
 linear.model.all.in<-lm(whole_weight~.-shucked_weight-viscera_weight-shell_weight,data=data.in)
 linear.model.all.in
@@ -100,14 +100,14 @@ summary(linear.model.all.in)
 plot(linear.model.all.in)
 ```
 
-Спрогнозировать (функция predict) значения во второй части.
+РЎРїСЂРѕРіРЅРѕР·РёСЂРѕРІР°С‚СЊ (С„СѓРЅРєС†РёСЏ predict) Р·РЅР°С‡РµРЅРёСЏ РІРѕ РІС‚РѕСЂРѕР№ С‡Р°СЃС‚Рё.
 ```{r}
 data.predict.out <- predict (linear.model.all.in, data.out)
 plot (data.out$whole_weight, data.predict.out)
 ```
 
-Проверить качество прогноза.
+РџСЂРѕРІРµСЂРёС‚СЊ РєР°С‡РµСЃС‚РІРѕ РїСЂРѕРіРЅРѕР·Р°.
 ```{r}
 cor (data.out$whole_weight, data.predict.out)
 ```
-Прогноз получился качественным, т.к. полученное значени е коэффициента корреляции близко к 1.
+РџСЂРѕРіРЅРѕР· РїРѕР»СѓС‡РёР»СЃСЏ РєР°С‡РµСЃС‚РІРµРЅРЅС‹Рј, С‚.Рє. РїРѕР»СѓС‡РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРё Рµ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° РєРѕСЂСЂРµР»СЏС†РёРё Р±Р»РёР·РєРѕ Рє 1.
