@@ -1,17 +1,24 @@
-# РџСЂРёСЃРІРѕР№С‚Рµ Р·РЅР°С‡РµРЅРёРµ 33.3 РїРµСЂРµРјРµРЅРЅРѕР№ my_numeric
-my_numeric <- 
-# РџСЂРѕРІРµСЂСЊС‚Рµ С‚РёРї РґР°РЅРЅС‹С… РїРµСЂРµРјРµРЅРЅРѕР№
+# Присвойте значение 33.3 переменной my_numeric
+my_numeric <- 33.3
+# Проверьте тип данных переменной
 class(my_numeric)
 
-# РЎРјРµРЅРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ my_numeric РЅР° 42
+# Смените значение my_numeric на 42
+my_numeric <- 42
 
+# Проверьте тип данных my_numeric
+class(my_numeric)
 
-# РџСЂРѕРІРµСЂСЊС‚Рµ С‚РёРї РґР°РЅРЅС‹С… my_numeric
+# Установите значение my_character в "МИР"
+my_character <- "Привет"
+my_character <- "мир"
 
-# РЈСЃС‚Р°РЅРѕРІРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ my_character РІ "РњРР "
-my_character <- "РџСЂРёРІРµС‚"
-# РџСЂРѕРІРµСЂСЊС‚Рµ С‚РёРї РґР°РЅРЅС‹С… my_numeric
+# Проверьте тип данных my_character
+class(my_character)
 
-# РЈСЃС‚Р°РЅРѕРІРёС‚Рµ my_logical РІ FALSE
+# Установите my_logical в FALSE
 my_logical <- TRUE
-# РџСЂРѕРІРµСЂСЊС‚Рµ С‚РёРї РґР°РЅРЅС‹С… my_numeric
+
+# Проверьте тип данных my_logical
+class(my_logical)
+
